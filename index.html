@@ -8,19 +8,24 @@
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
 <body>
-    <div id="app">
-        {{ message }}
+    <div id="counter">
+        Counter: {{ counter }}
 
         <script>
-            const appData = {
+            const Counter = {
                 data(){
                     return{
-                        message : 'チャーっす'
+                        counter : 0
                     }
+                },
+                mounted(){
+                    setInterval(() => {
+                        this.counter++
+                    }, 1000)
                 }
             }
 
-            Vue.createApp(appData).mount('#app')
+            Vue.createApp(Counter).mount('#counter')
         </script>
     </div>
 </body>
