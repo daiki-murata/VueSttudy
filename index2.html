@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>ディレクティブの勉強</title>
+</head>
+<body>
+    <div id="app">
+        <span v-bind:title="message" v-bind:name="name">
+            この文字列にマウスオーバーしてください
+        </span>
+    </div>
+
+    <script>
+        const appdata = {
+            data(){
+                return{
+                    message : "読み込んだ時間は" + new Date().toLocaleString() + "です" ,
+                    name : "time"
+                }
+            }
+        }
+
+       let app =  Vue.createApp(appdata).mount("#app")
+    </script>
+</body>
+</html>
