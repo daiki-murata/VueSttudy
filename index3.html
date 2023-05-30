@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>v-for v-if v-on v-model</title>
+</head>
+<body>
+    <div id="app">
+        <h3>{{ message }}</h3>
+        <ul v-for="item in items">
+            <li>{{ item }}</li>
+        </ul>
+        <input type="text" v-model="addList" />
+        <button v-if="addList != ''" v-on:click="add">追加</button>
+    </div>
+
+    <script>
+        const appdata = {
+            data(){
+                return{
+                    message : "ほしい物リスト" ,
+                    items : ["洗濯機" , "掃除機" , "レンジ"],
+                    addList : ""
+                }
+            },
+            methods:{
+                add(){
+                    this.items.push(this.addList)
+                }
+            }
+        }
+
+       let app =  Vue.createApp(appdata).mount("#app")
+    </script>
+</body>
+</html>
