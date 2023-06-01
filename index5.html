@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{ message }}
+        <fruits v-for="item in items" :text="item"></fruits>
+        <input v-model="addItem">
+        <button @click="add">追加</button>
+    </div>
+
+    <script>
+        const appData =  {
+            data() {
+                return {
+                    message : "フルーツ",
+                    items:["りんご" , "バナナ" , "パイナップル"],
+                    addItem:""
+                }
+            },
+            methods:{
+                add(){
+                    this.items.push(this.addItem)
+                }
+            }
+        }
+
+        const app = Vue.createApp(appData)
+
+        app.component("fruits" , {
+            props : ["text"] ,
+            template : `<li>{{ text }}</li>`
+        })
+
+        app.mount("#app")
+    </script>
+</body>
+</html>
